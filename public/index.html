@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.min.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div>
+			<h1 style="text-align: center">Welcome to a basic express App</h1>
+			<form id="fm" action="#" method="post">
+				<p>Name: <input type="text" name="name" class="ipt" /></p>
+				<p>Location: <input type="text" name="location" class="ipt" /></p>
+				<input type="button" value="Submit" class="ipt" onclick="sub()" />
+			</form>
+		</div>
+	</body>
+	<style>
+		#fm {
+			text-align: center;
+		}
+		.ipt {
+			margin: 0 auto;
+		}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+	<script>
+		function sub() {
+			let params = $("#fm").serializeArray();
+			if (params[0].value && params[1].value) {
+				let obj = {
+					name: params[0].value,
+					location: params[1].value,
+				};
+				$.post("/user", obj, (res) => {
+					alert(res);
+				});
+			} else {
+				alert("请输入信息!");
+			}
+		}
+	</script>
+</html>
