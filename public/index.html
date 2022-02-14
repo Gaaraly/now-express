@@ -35,7 +35,7 @@
 					location: params[1].value,
 				};
 				$.post("/user", obj, (res) => {
-					alert(res);
+					alert(JSON.stringify(res));
 				});
 			} else {
 				alert("请输入信息!");
